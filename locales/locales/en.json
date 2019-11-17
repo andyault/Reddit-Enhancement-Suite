@@ -4428,5 +4428,14 @@
     },
     "quarantineHideInSubDesc": {
         "message": "Hide all warnings of quarantine while viewing a quarantined subreddit"
-    }
+    },
+	"markVisitedName": {
+		"message": "Mark as Visited"
+	},
+	"markVisitedDesc": {
+		"message": "Adds a \"Mark Visited\" link that opens the selected post in the background"
+	},
+	"markVisitedLabel": {
+		"message": "mark visited"
+	}
 }
