@@ -12,8 +12,8 @@ module.exports = {
 			.click('.expando-button')
 			.waitForElementVisible('.res-expando-box')
 			.assert.attributeEquals('.res-expando-box', 'data-host', 'default')
-			.assert.attributeEquals('.res-expando-box img', 'src', 'https://media.snl.no/system/images/59080/article_topimage_flagg2.png')
-			.assert.attributeEquals('.res-expando-box a', 'href', 'https://media.snl.no/system/images/59080/article_topimage_flagg2.png')
+			.assert.attributeEquals('.res-expando-box img', 'src', 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Joe_Exotic_%28Santa_Rose_County_Jail%29.png')
+			.assert.attributeEquals('.res-expando-box a', 'href', 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Joe_Exotic_%28Santa_Rose_County_Jail%29.png')
 
 			.pause(1000)
 			.windowHandles(result => {
@@ -27,7 +27,7 @@ module.exports = {
 			.windowHandles(result => {
 				browser.switchWindow(result.value.find(win => !oldWindowHandles.includes(win)));
 			})
-			.assert.urlContains('/article_topimage_flagg2.png')
+			.assert.urlContains('https://upload.wikimedia.org/wikipedia/commons/b/b1/Joe_Exotic_%28Santa_Rose_County_Jail%29.png')
 
 			.end();
 	},
@@ -36,7 +36,7 @@ module.exports = {
 			.url('https://en.reddit.com/r/RESIntegrationTests/comments/60ef59/video_expando/')
 			.waitForElementVisible('.expando-button')
 			.assert.cssClassPresent('.expando-button', 'video')
-			.assert.cssClassNotPresent('.expando-button', 'video-muted')
+			.assert.not.cssClassPresent('.expando-button', 'video-muted')
 			.assert.cssClassPresent('.expando-button', 'collapsed')
 			.assert.attributeEquals('.expando-button', 'data-host', 'defaultVideo')
 			.click('.expando-button')
@@ -99,7 +99,7 @@ module.exports = {
 			.assert.containsText('.res-expando-box', '1 of 2')
 			.assert.attributeEquals('.res-expando-box .res-gallery-pieces > div:not([hidden]) img', 'src', 'https://i.imgur.com/rXZWEIB.jpg')
 			.assert.attributeEquals('.res-expando-box .res-gallery-pieces > div:not([hidden]) a', 'href', 'https://imgur.com/rXZWEIB,eutVEAv#rXZWEIB')
-			.click('.res-expando-box .res-gallery-next')
+			.click('.res-expando-box .res-step-next')
 			.assert.containsText('.res-expando-box', '2 of 2')
 			.assert.attributeEquals('.res-expando-box .res-gallery-pieces > div:not([hidden]) img', 'src', 'https://i.imgur.com/eutVEAv.jpg')
 			.assert.attributeEquals('.res-expando-box .res-gallery-pieces > div:not([hidden]) a', 'href', 'https://imgur.com/rXZWEIB,eutVEAv#eutVEAv')
@@ -122,13 +122,13 @@ module.exports = {
 			.url('https://en.reddit.com/by_id/t3_6346fk,t3_6346h7')
 			.waitForElementVisible('.res-show-images')
 			.assert.containsText('.res-show-images', 'show images')
-			.assert.cssClassNotPresent('.res-show-images', 'selected')
+			.assert.not.cssClassPresent('.res-show-images', 'selected')
 			.click('.res-show-images')
 			.assert.cssClassPresent('.res-show-images', 'selected')
 			.waitForElementVisible('#thing_t3_6346fk .res-expando-box img')
 			.waitForElementVisible('#thing_t3_6346h7 .res-expando-box img')
 			.click('.res-show-images')
-			.assert.cssClassNotPresent('.res-show-images', 'selected')
+			.assert.not.cssClassPresent('.res-show-images', 'selected')
 			.waitForElementNotVisible('#thing_t3_6346fk .res-expando-box img')
 			.waitForElementNotVisible('#thing_t3_6346h7 .res-expando-box img')
 			.end();
